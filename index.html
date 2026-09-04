@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ELMENGATOR — Создание современных сайтов</title>
+
+    <meta name="description"
+          content="ELMENGATOR — разработка современных адаптивных сайтов, Landing Page, сайтов-визиток и frontend-разработка.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07080d;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 8, 13, 0.82);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #a8aab7;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .nav-button {
+            padding: 11px 19px;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #08090d;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: #6c63ff;
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 75px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #5148ff;
+            filter: blur(180px);
+            opacity: 0.15;
+            top: -200px;
+            right: -150px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #00b7ff;
+            filter: blur(180px);
+            opacity: 0.09;
+            bottom: -200px;
+            left: -150px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            border-radius: 50px;
+            color: #b9b7ff;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin-bottom: 28px;
+        }
+
+        h1 span {
+            color: #7067ff;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: #a7a9b5;
+            font-size: 19px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #08090d;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #7067ff;
+            color: white;
+            box-shadow: 0 10px 35px rgba(112,103,255,0.25);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.03);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: #7067ff;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-title {
+            max-width: 700px;
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            color: #7067ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: clamp(35px, 5vw, 58px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            color: #9295a3;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .service {
+            padding: 30px;
+            min-height: 260px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.06),
+                rgba(255,255,255,0.015)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            transition: 0.35s;
+        }
+
+        .service:hover {
+            transform: translateY(-7px);
+            border-color: rgba(112,103,255,0.5);
+            background: rgba(112,103,255,0.07);
+        }
+
+        .service-number {
+            color: #7067ff;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .service h3 {
+            font-size: 22px;
+            margin-bottom: 13px;
+        }
+
+        .service p {
+            color: #9295a3;
+            font-size: 14px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background: #0b0c12;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #a1a3af;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .about-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .about-box {
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .about-box strong {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .about-box span {
+            color: #858895;
+            font-size: 13px;
+        }
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            border-top: 2px solid #7067ff;
+            padding: 25px 10px;
+        }
+
+        .step-number {
+            font-size: 13px;
+            color: #7067ff;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #858895;
+            font-size: 14px;
+        }
+
+        /* =========================
+           TECHNOLOGIES
+        ========================= */
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tech-item {
+            padding: 14px 20px;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 12px;
+            color: #d7d8df;
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            text-align: center;
+            padding: 120px 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(112,103,255,0.15),
+                    transparent 60%
+                );
+        }
+
+        .cta h2 {
+            max-width: 750px;
+            margin: 0 auto 20px;
+        }
+
+        .cta p {
+            color: #9295a3;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* =========================
+           CONTACTS
+        ========================= */
+
+        .contacts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .contact {
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .contact small {
+            display: block;
+            color: #7067ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .contact a {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .contact a:hover {
+            color: #7067ff;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #70727e;
+            font-size: 13px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                display: none;
+            }
+
+            .nav-button {
+                display: block;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contacts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .nav {
+                height: 65px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-button {
+                padding: 9px 13px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+
+            h1 {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .about-boxes {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="#" class="logo">
+            ELM<span>ENGATOR</span>
+        </a>
+
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#about">О компании</a>
+            <a href="#process">Как работаем</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <a
+            class="nav-button"
+            href="https://wa.me/77088712592"
+            target="_blank">
+            Написать
+        </a>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                FRONTEND • WEB DEVELOPMENT
+            </div>
+
+            <h1>
+                Создаю сайты,<br>
+                которые <span>работают.</span>
+            </h1>
+
+            <p class="hero-description">
+                ELMENGATOR — независимая digital-студия по разработке
+                современных, адаптивных и удобных веб-сайтов.
+                Создаю сайты для бизнеса, услуг, проектов и личных брендов.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    href="https://wa.me/77088712592"
+                    target="_blank"
+                    class="btn btn-primary">
+                    Обсудить проект →
+                </a>
+
+                <a
+                    href="#services"
+                    class="btn btn-secondary">
+                    Посмотреть услуги
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-label">
+                Услуги
+            </div>
+
+            <h2>
+                Всё необходимое<br>
+                для современного сайта.
+            </h2>
+
+            <p class="section-description">
+                От простой страницы до полноценного современного
+                frontend-интерфейса.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service">
+                <div class="service-number">01</div>
+                <h3>Landing Page</h3>
+                <p>
+                    Одностраничные сайты для бизнеса, услуг,
+                    продуктов, рекламы и презентации проекта.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">02</div>
+                <h3>Сайт-визитка</h3>
+                <p>
+                    Компактный профессиональный сайт о компании,
+                    специалисте, услуге или личном бренде.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">03</div>
+                <h3>Frontend Development</h3>
+                <p>
+                    Создание интерфейсов на HTML5, CSS3 и JavaScript
+                    с вниманием к структуре и удобству пользователя.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">04</div>
+                <h3>Адаптивная вёрстка</h3>
+                <p>
+                    Сайт корректно отображается на смартфонах,
+                    планшетах, ноутбуках и больших мониторах.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">05</div>
+                <h3>Редизайн</h3>
+                <p>
+                    Обновление устаревшего сайта и создание
+                    современного визуального интерфейса.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">06</div>
+                <h3>Доработка сайтов</h3>
+                <p>
+                    Добавление новых блоков, изменение дизайна,
+                    исправление элементов и улучшение интерфейса.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div>
+
+                <div class="section-label">
+                    ELMENGATOR
+                </div>
+
+                <h2>
+                    Небольшая студия.
+                    Большое внимание к деталям.
+                </h2>
+
+            </div>
+
+            <div class="about-text">
+
+                <p>
+                    ELMENGATOR — независимая студия веб-разработки,
+                    специализирующаяся на frontend-разработке и создании
+                    современных сайтов.
+                </p>
+
+                <p>
+                    Главная задача — не просто написать код, а создать
+                    понятный, аккуратный и визуально привлекательный сайт,
+                    который представляет бизнес профессионально.
+                </p>
+
+                <p>
+                    Работаю с современными технологиями HTML5, CSS3
+                    и JavaScript. Каждый проект создаётся с учётом
+                    мобильных устройств и реальных задач клиента.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROCESS
+========================= -->
+
+<section id="process">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-label">
+                Процесс
+            </div>
+
+            <h2>
+                От идеи<br>
+                до готового сайта.
+            </h2>
+
+        </div>
+
+
+        <div class="process">
+
+            <div class="step">
+
+                <div class="step-number">01 / БРИФ</div>
+
+                <h3>Обсуждаем задачу</h3>
+
+                <p>
+                    Узнаю, какой сайт нужен, для кого он создаётся
+                    и какую задачу должен решать.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">02 / DESIGN</div>
+
+                <h3>Продумываем структуру</h3>
+
+                <p>
+                    Формируем структуру страниц, блоков,
+                    информации и пользовательского пути.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">03 / CODE</div>
+
+                <h3>Разрабатываю</h3>
+
+                <p>
+                    Создаю frontend сайта, адаптирую интерфейс
+                    под разные размеры экранов.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">04 / LAUNCH</div>
+
+                <h3>Передаю результат</h3>
+
+                <p>
+                    Проверяем готовый сайт, исправляем детали
+                    и подготавливаем его к публикации.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TECHNOLOGIES
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-label">
+                Technologies
+            </div>
+
+            <h2>
+                Инструменты
+                разработки.
+            </h2>
+
+            <p class="section-description">
+                Использую базовые современные технологии frontend-разработки.
+            </p>
+
+        </div>
+
+
+        <div class="tech">
+
+            <div class="tech-item">HTML5</div>
+            <div class="tech-item">CSS3</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">Responsive Design</div>
+            <div class="tech-item">UI / UX</div>
+            <div class="tech-item">Frontend</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="cta">
+
+            <div class="section-label">
+                START A PROJECT
+            </div>
+
+            <h2>
+                Есть идея для сайта?
+            </h2>
+
+            <p>
+                Расскажите о своём проекте — обсудим задачу,
+                формат сайта и возможности реализации.
+            </p>
+
+            <a
+                href="https://wa.me/77088712592"
+                target="_blank"
+                class="btn btn-primary">
+                Написать в WhatsApp →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTS
+========================= -->
+
+<section id="contacts">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-label">
+                Контакты
+            </div>
+
+            <h2>
+                Давайте создадим<br>
+                что-нибудь хорошее.
+            </h2>
+
+        </div>
+
+
+        <div class="contacts">
+
+            <div class="contact">
+
+                <small>WhatsApp</small>
+
+                <a
+                    href="https://wa.me/77088712592"
+                    target="_blank">
+                    +7 708 871 25 92
+                </a>
+
+            </div>
+
+
+            <div class="contact">
+
+                <small>Телефон</small>
+
+                <a href="tel:+77088712592">
+                    +7 708 871 25 92
+                </a>
+
+            </div>
+
+
+            <div class="contact">
+
+                <small>Компания</small>
+
+                <a href="#">
+                    ELMENGATOR
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+            © 2026 ELMENGATOR
+        </div>
+
+        <div>
+            WEB DEVELOPMENT • FRONTEND
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
